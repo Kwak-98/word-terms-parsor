@@ -9,7 +9,30 @@
     <link rel="stylesheet" href="http://pinnpublic.dothome.co.kr/cdn/example-min.css">
 </head>
 <body>
-    <h1>테스트 페이지</h1>
+    <!-- header 영역-->
+    <div th:insert="~{fragment/header}"></div>
+
+    <!-- article 영역 -->
+    <article>
+
+        <form action="/view" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>File to upload:</td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Upload" /></td>
+                </tr>
+            </table>
+        </form>
+
+    </article>
+
+    <!-- footer영역 -->
+    <div th:insert="~{fragment/footer}"></div>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </body>
 </html>
