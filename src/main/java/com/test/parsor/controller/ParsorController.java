@@ -1,8 +1,10 @@
 package com.test.parsor.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ParsorController {
@@ -17,7 +19,10 @@ public class ParsorController {
     }
 
     @PostMapping("/view.kr")
-    public String view() {
+    public String view(MultipartFile file, Model model) {
+
+        
+
         return "view";
     }
 

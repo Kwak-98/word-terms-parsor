@@ -11,16 +11,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DocsReadTest {
 
-    private final String EXISTS_FILE_PATH = "C:\\Users\\user\\Desktop\\github\\parsor\\src\\main\\resources\\static\\files\\termm.docx";
+    private final String EXISTS_FILE_PATH = "C:\\Users\\wlgus\\Desktop\\code\\intelij_workspace\\parsor\\src\\main\\resources\\static\\files\\termm.docx";
     private final String NONE_FILE_PATH = "C:\\Users\\user\\Desktop\\github\\parsor\\src\\main\\resources\\static\\files\\none.docx";
 
     @Test()
@@ -37,7 +35,7 @@ public class DocsReadTest {
 
         for (XWPFParagraph paragraph : document.getParagraphs()) {
             String text = paragraph.getText();
-            word.add(text);
+            word.add(text.replace("?","·"));
             line += 1;
         }
 

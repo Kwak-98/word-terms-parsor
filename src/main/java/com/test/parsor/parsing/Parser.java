@@ -4,6 +4,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Parsing에 필요한 기능을 정의한 인터페이스
@@ -31,5 +32,14 @@ public interface Parser {
         }
 
     }
+
+    /**
+     * resource -> static -> files -> 존재하는 파일이름을 입력시
+     * List로 반환하는 메서드
+     * @param fileName : 파일 이름
+     * @return List<String> : 파일의 각 줄이 String으로 저장된 List
+     * @throws IOException  : 파일을 읽어야되기 때문에 입출력 예외 발생
+     */
+    public List<String> toList(String fileName) throws IOException;
 
 }
