@@ -44,5 +44,10 @@ public interface Parser {
     public List<String> toList(String fileName) throws IOException;
 
 
+    /**
+     * 파일의 이름과 내용물을 받아서 트리구조의 AbstractElement생성
+     * @param fileName : 파일 이름
+     * @return List<String> : 파일의 각 줄이 String으로 저장된 List
+     */
     AbstractElement parse(String fileName, List<String> word);
 }

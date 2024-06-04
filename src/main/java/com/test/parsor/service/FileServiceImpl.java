@@ -22,13 +22,26 @@ public class FileServiceImpl implements FileService{
             return word;
         }
 
-        //docx파일을 바로 읽어서 List로 반환
+        // docx파일을 apache poi라이브러로 read List로 반환
+        // Stream과 Documnet는 close해야되기 때문에 try-with-resources사용
         try (
             InputStream inputStream = file.getInputStream();
             XWPFDocument document = new XWPFDocument(inputStream);
         ){
             // List에 각 줄마다 String으로 변환후 반환
+
+            document.getBodyElements().stream().forEach(element -> System.out.println(element.getElementType().toString()));
+
+
+
             document.getParagraphs().stream().forEach(paragraph -> word.add(paragraph.getText()));
+            document.getTables().stream().forEach(table ->
+                        table.getRows().stream().forEach(row ->
+                                row.getTableCells().stream().forEach(cell -> word.add(cell.getText())
+                                )
+                        )
+            );
+
             return word;
 
         } catch (IOException e) {

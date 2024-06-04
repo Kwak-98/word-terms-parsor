@@ -1,5 +1,6 @@
 package com.test.parsor.parsing;
 
+import com.test.parsor.word.AbstractElement;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -28,5 +29,10 @@ public class ParserImpl implements Parser{
         document.getParagraphs().stream().forEach(paragraph -> word.add(paragraph.getText()));
 
         return word;
+    }
+
+    @Override
+    public AbstractElement parse(String fileName, List<String> word) {
+        return null;
     }
 }//End of class
