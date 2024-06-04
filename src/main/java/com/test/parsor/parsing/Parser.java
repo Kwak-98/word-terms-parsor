@@ -1,5 +1,6 @@
 package com.test.parsor.parsing;
 
+import com.test.parsor.word.AbstractElement;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
@@ -42,4 +43,6 @@ public interface Parser {
      */
     public List<String> toList(String fileName) throws IOException;
 
+
+    AbstractElement parse(String fileName, List<String> word);
 }

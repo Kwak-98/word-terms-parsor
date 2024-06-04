@@ -1,14 +1,8 @@
 package com.test.parsor.word;
 
 import com.test.parsor.enums.ContentsType;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-abstract class AbstractElement {
+public abstract class AbstractElement {
 
     private AbstractElement parent;         // 부모 객체
     private ContentsType contentsType;      // 관, 조, 항 등의 타입
