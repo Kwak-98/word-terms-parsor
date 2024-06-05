@@ -7,18 +7,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TableElement extends AbstractElement{
+public class ReverseParagraphElement extends AbstractElement {
 
-    private AbstractElement[] rows;
+    private String reverseTitle;
 
     @Builder
-    public TableElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
-            , Integer no, AbstractElement[] rows, String text) {
+    public ReverseParagraphElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
+            , Integer no, String reverseTitletitle, String text) {
         this.parent = parent;
         this.children = children;
         this.contentsType = contentsType;
         this.no = no;
-        this.rows = rows;
+        this.reverseTitle = reverseTitletitle;
         this.text = text;
     }
 

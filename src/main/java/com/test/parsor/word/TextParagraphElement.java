@@ -5,20 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class TableElement extends AbstractElement{
-
-    private AbstractElement[] rows;
+public class TextParagraphElement extends AbstractElement{
 
     @Builder
-    public TableElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
-            , Integer no, AbstractElement[] rows, String text) {
+    public TextParagraphElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
+            , Integer no, String title, String text) {
         this.parent = parent;
         this.children = children;
         this.contentsType = contentsType;
         this.no = no;
-        this.rows = rows;
         this.text = text;
     }
 

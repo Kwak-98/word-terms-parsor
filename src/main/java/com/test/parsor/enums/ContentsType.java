@@ -7,7 +7,8 @@ public enum ContentsType {
     PARAGRAPH("항"),
     SUB_PARAGRAPH("호"),
     ITEM("목"),
-    RANDOM("Random");
+    RANDOM("Random"),
+    TABLE("Table"),;
 
     private final String value;
 

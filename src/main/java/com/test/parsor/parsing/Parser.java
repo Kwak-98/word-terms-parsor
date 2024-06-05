@@ -1,11 +1,13 @@
 package com.test.parsor.parsing;
 
 import com.test.parsor.word.AbstractElement;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Parsing에 필요한 기능을 정의한 인터페이스
@@ -45,9 +47,10 @@ public interface Parser {
 
 
     /**
-     * 파일의 이름과 내용물을 받아서 트리구조의 AbstractElement생성
-     * @param fileName : 파일 이름
-     * @return List<String> : 파일의 각 줄이 String으로 저장된 List
+     * document를 받아서 트리구조의 AbstractElement생성
+     * @param document : 파일의 내용물
+     * @return Optional<AbstractElement> : null체크를 하기위한 Optional로 포장된
+     *                                     트리구조의 AbstractElement
      */
-    AbstractElement parse(String fileName, List<String> word);
+    Optional<AbstractElement> parse(XWPFDocument document);
 }
