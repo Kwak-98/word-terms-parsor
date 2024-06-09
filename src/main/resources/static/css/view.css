@@ -1,0 +1,23 @@
+#file-name {
+    text-align: center;
+    font-size: 17px;
+}
+
+#back-btn {
+    float: right;
+    margin-right: 10px;
+
+}
+
+#terms-content {
+    margin-top: 40px;
+    border-top: 3px solid #CCCCCC;
+}
+
+.sub-section {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}

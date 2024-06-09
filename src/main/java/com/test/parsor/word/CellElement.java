@@ -5,20 +5,22 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CellElement extends AbstractElement{
 
-    private AbstractElement element;
+    private AbstractElement[] elements;
 
     @Builder
-    public CellElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
-            , Integer no, AbstractElement element, String text) {
+    public CellElement(AbstractElement parent, List<AbstractElement> children, ContentsType contentsType
+            , Integer no, AbstractElement[] elements, String text) {
         this.parent = parent;
         this.children = children;
         this.contentsType = contentsType;
         this.no = no;
-        this.element = element;
+        this.elements = elements;
         this.text = text;
     }
 

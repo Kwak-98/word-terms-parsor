@@ -7,36 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="http://pinnpublic.dothome.co.kr/cdn/example-min.css">
-    <style>
-
-        #file-name {
-            text-align: center;
-            font-size: 17px;
-        }
-
-        #back-btn {
-            float: right;
-            margin-right: 10px;
-
-        }
-
-        #terms-content {
-            margin-top: 40px;
-            border-top: 3px solid #CCCCCC;
-        }
-
-    </style>
+    <link rel="stylesheet" href="/css/view.css">
 </head>
 <body>
     <div>
-        <div th:text="${filename}" id="file-name"><a href="/index.kr">뒤로가기</a></div>
+        <div th:text="${filename}" id="file-name">파일제목</div>
         <div id="back-btn">
             <button type="button" onclick="location.href='/index.kr'">뒤로가기</button>
         </div>
     </div>
     <div id="terms-content">
-
-        <div th:utext="${text}"></div>
+        <!-- 파일읽는데 문제가 생길경우 -->
+        <div th:if="${exception != null}" >
+            <h2 th:text="${exception}"></h2>
+        </div>
+        <!-- 정상적으로 파일을 읽은 경우 -->
+        <th:block th:unless="${exception != null}">
+            <th:block th:each="line : ${word}">
+                <span th:utext="${line}"></span>
+            </th:block>
+        </th:block>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

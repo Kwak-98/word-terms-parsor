@@ -1,0 +1,31 @@
+body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+header {
+    border-radius: 20%;
+}
+
+header > h1 {
+    margin: 0 auto;
+}
+
+td span {
+    text-align: center;
+}
+
+footer {
+    border-radius: 20%;
+    border-top: 5px solid #CCCCCC;
+
+}
+
+footer > p {
+    text-align: center;
+}
+
+article table {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}

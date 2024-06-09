@@ -15,7 +15,6 @@ import java.util.Optional;
  */
 public interface Parser {
 
-
     /**
      * 업로드한 파일이 있는지 없는지 확인하는 메서드
      * 구현체가될 Parser와 상관없이 필요한 기능
@@ -33,24 +32,27 @@ public interface Parser {
             // 해당 파일이 없어서 예외가 발생시 false반환
             return false;
         }
-
     }
 
     /**
-     * resource -> static -> files -> 존재하는 파일이름을 입력시
-     * List로 반환하는 메서드
-     * @param fileName : 파일 이름
-     * @return List<String> : 파일의 각 줄이 String으로 저장된 List
-     * @throws IOException  : 파일을 읽어야되기 때문에 입출력 예외 발생
+     * 트리구조의 문서를 List로 반환하는 메서드
+     * @param element : 트리의 루트
+     * @return List<String> : 파일의 각 요소가 AbstactElement로 저장된 List
      */
-    public List<String> toList(String fileName) throws IOException;
+    public List<AbstractElement> toList(AbstractElement element);
 
+    /**
+     * 정리된 객체List를 html출력을 위한 문자열 List로 반환하는 메서드
+     * @param word : 공백이 없고 문서의 순서대로 정리된 AbstractElement 객체 List
+     * @return List<String> : html태그로 변환된 문서List
+     */
+    List<String> toHtml(List<AbstractElement> word);
 
     /**
      * document를 받아서 트리구조의 AbstractElement생성
      * @param document : 파일의 내용물
-     * @return Optional<AbstractElement> : null체크를 하기위한 Optional로 포장된
-     *                                     트리구조의 AbstractElement
+     * @return Optional<AbstractElement> : null체크를 하기위한 Optional로 포장된 트리구조의 AbstractElement의 root반환
      */
     Optional<AbstractElement> parse(XWPFDocument document);
+
 }

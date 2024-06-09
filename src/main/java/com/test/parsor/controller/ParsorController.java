@@ -30,27 +30,34 @@ public class ParsorController {
         return "index";
     }
 
+    /**
+     * 업로드한 문서를 저장하지않고 내용물만 객체 트리구조로 변환
+     * 콘솔 출력 + view페이지로 포워딩
+     * @param file   : 업로드한 문서
+     * @param model  : 페이지로 전달
+     * @return       : "view" : 상세 보기 페이지
+     */
     @PostMapping("/view.kr")
     public String view(MultipartFile file, Model model) {
 
         // docx파일을 AbstractElement로 변환
         // null이 아니면 페이지로 포워딩
         XWPFDocument document = FILE_SERVICE.readFile(file);
-        Optional<AbstractElement> root = PARSER.parse(document);
-
-        //출력 테스트
-        StringBuilder builder = new StringBuilder();
-        document.getParagraphs().forEach(p -> builder.append(p.getText()).append("<br>"));
+        Optional<AbstractElement> rootElement = PARSER.parse(document);
 
         //파일 이름 포워딩
         model.addAttribute("filename", file.getOriginalFilename());
         
         //root가 존재하면 root반환, null이면 에러문자 반환
-        if(root.isPresent()) {
-            model.addAttribute("root", root);
+        if(rootElement.isPresent()) {
+            AbstractElement root = rootElement.get();
+            root.print();
+            List<AbstractElement> word = PARSER.toList(root);
+            List<String> html = PARSER.toHtml(word);
+
+            model.addAttribute("word", html);
         }else {
             model.addAttribute("exception", "파일을 읽어오지 못했습니다.");
-            model.addAttribute("text", builder.toString());
         }
 
         return "view";

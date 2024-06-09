@@ -5,15 +5,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class TableElement extends AbstractElement{
 
-    private AbstractElement[] rows;
+    private RowElement[] rows;
 
     @Builder
-    public TableElement(AbstractElement parent, AbstractElement[] children, ContentsType contentsType
-            , Integer no, AbstractElement[] rows, String text) {
+    public TableElement(AbstractElement parent, List<AbstractElement> children, ContentsType contentsType
+            , Integer no, RowElement[] rows, String text) {
         this.parent = parent;
         this.children = children;
         this.contentsType = contentsType;
